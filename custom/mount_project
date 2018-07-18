@@ -1,0 +1,4 @@
+mkdir -p /mnt/Project > /dev/null
+mount -t vboxsf Project /mnt/Project
+sleep 0.05
+rsync -azP -i /mnt/Project/ ~/Project/

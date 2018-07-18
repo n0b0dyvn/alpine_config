@@ -1,0 +1,2 @@
+alias tmux="tmux -u -f ~/.sangvh/tmux.conf"
+alias mount_project="bash ~/.sangvh/custom/mount_project"

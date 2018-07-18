@@ -1,0 +1,9 @@
+mount | grep /mnt/Project > /dev/null && ( 
+		mkdir -p /var/backup/rsync/
+		rsync -a --delete --backup --backup-dir=/var/backup/rsync ~/Project/ /mnt/Project
+		echo "$(date +'%T %F') - Sync success /mnt/Project" >> /tmp/rsync_report.txt
+	)  || (
+		gzip -d -c /tmp/rsync_report.txt.gz > /tmp/rsync_report.txt 2> /dev/null
+		echo "$(date +'%T %F') - Sync failed /mnt/Project" >> /tmp/rsync_report.txt
+		gzip -f /tmp/rsync_report.txt
+	)
